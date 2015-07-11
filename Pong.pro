@@ -30,7 +30,8 @@ SOURCES += \
     States/Source/MenuState.cpp \
     States/Source/PauseState.cpp \
     States/Source/NewLevel.cpp \
-    Level.cpp
+    Level.cpp \
+    CustomClock.cpp
 
 include(deployment.pri)
 qtcAddDeployment()
@@ -58,5 +59,6 @@ HEADERS += \
     Paddle.hpp \
     States/Include/MenuState.hpp \
     States/Include/PauseState.hpp \
-    Level.hpp
+    Level.hpp \
+    CustomClock.hpp
 

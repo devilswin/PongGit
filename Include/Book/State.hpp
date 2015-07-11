@@ -3,7 +3,7 @@
 
 #include <include/Book/StateIdentifiers.hpp>
 #include <include/Book/ResourceIdentifiers.hpp>
-
+#include "CustomClock.hpp"
 #include <SFML/System/Time.hpp>
 #include <SFML/Window/Event.hpp>
 
@@ -25,12 +25,13 @@ class State
 
 		struct Context
 		{
-								Context(sf::RenderWindow& window, TextureHolder& textures, FontHolder& fonts, Player& player);
+								Context(sf::RenderWindow& window, TextureHolder& textures, FontHolder& fonts, Player& player, CustomClock& clock);
 
 			sf::RenderWindow*	window;
 			TextureHolder*		textures;
 			FontHolder*			fonts;
 			Player*				player;
+			CustomClock*		clock;
 		};
 
 

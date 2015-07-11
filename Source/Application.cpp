@@ -5,7 +5,7 @@
 #include <States/Include/GameState.hpp>
 #include <States/Include/MenuState.hpp>
 #include <States/Include/PauseState.hpp>
-
+#include "CustomClock.hpp"
 const sf::Time Application::TimePerFrame = sf::seconds(1.f/60.f);
 
 Application::Application()
@@ -13,7 +13,8 @@ Application::Application()
         , mTextures()
         , mFonts()
         , mPlayer()
-        , mStateStack(State::Context(mWindow, mTextures, mFonts, mPlayer))
+        , mClock()
+        , mStateStack(State::Context(mWindow, mTextures, mFonts, mPlayer, mClock))
         , mStatisticsText()
         , mStatisticsUpdateTime()
         , mStatisticsNumFrames(0)

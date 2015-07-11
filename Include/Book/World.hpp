@@ -14,6 +14,7 @@
 #include <SFML/Graphics/View.hpp>
 #include <SFML/Graphics/Texture.hpp>
 #include <SFML/Graphics.hpp>
+#include "CustomClock.hpp"
 #include "Level.hpp"
 #include <string>
 #include <array>
@@ -29,7 +30,7 @@ namespace sf
 class World : private sf::NonCopyable
 {
         public:
-	    explicit								World(sf::RenderWindow& window);
+	    explicit							World(sf::RenderWindow& window, CustomClock clock);
 	    void								update(sf::Time dt);
 	    void								draw();
 	    
@@ -67,7 +68,7 @@ class World : private sf::NonCopyable
 	    bool CAN_HIT;
 	    sf::View						mWorldView;
 	    TextureHolder					mTextures;
-	    sf::Clock						levelClock;
+	    CustomClock						levelClock;
 	    sf::Time						levelTime;
 	    SceneNode						mSceneGraph;
 	    std::array<SceneNode*, LayerCount>		mSceneLayers;

@@ -34,7 +34,7 @@ class Application
 		TextureHolder			            mTextures;
 	  	FontHolder				mFonts;
 		Player					mPlayer;
-
+		CustomClock				mClock;
 		StateStack				mStateStack;
 
 		sf::Text				mStatisticsText;

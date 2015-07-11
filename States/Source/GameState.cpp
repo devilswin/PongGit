@@ -1,5 +1,5 @@
 #include <States/Include/GameState.hpp>
-
+#include <iostream>
 
 #include <iostream>
 
@@ -7,7 +7,7 @@ GameState::GameState(StateStack& stack, Context context)
 : State(stack, context)
 , pScore()
 , cScore()
-, mWorld(*context.window)
+, mWorld(*context.window, *context.clock)
 , mPlayer(*context.player)
 
 
@@ -47,13 +47,15 @@ bool GameState::update(sf::Time dt)
 	CommandQueue& commands = mWorld.getCommandQueue();
 	mPlayer.handleRealtimeInput(commands);
 	pScore.setString(mWorld.getTimeStr());
-	if(mWorld.getTime() == 0)
+	if(mWorld.getTime() <= 0)
 	{
+	        getContext().clock->pause();
 	        mLevel += 1;
 	        mWorld.newLevel(mLevel);
 	        requestStackPush(States::Pause);
-	        
+	        std::cout << "NEW" << std::endl;
 	}
+	
 	return true;
 }
 

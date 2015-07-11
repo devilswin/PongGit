@@ -9,12 +9,12 @@
 #include <cstdio>
 #include <ctime>
 
-World::World(sf::RenderWindow& window)
+World::World(sf::RenderWindow& window, CustomClock clock)
         : mWindow(window)
         , CAN_HIT(true)
         , mWorldView(window.getDefaultView())
         , mTextures() 
-        , levelClock()
+        , levelClock(clock)
         , levelTime(sf::seconds(5))
         , mSceneGraph()
         , mSceneLayers()
