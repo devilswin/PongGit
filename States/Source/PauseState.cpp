@@ -56,7 +56,7 @@ bool PauseState::handleEvent(const sf::Event& event)
 	{
 		// Escape pressed, remove itself to return to the game
 		requestStackPop();
-		&getContext.clock->clockReset();
+		getContext.clock->clockReset();
 	}
 
 	if (event.key.code == sf::Keyboard::BackSpace)
