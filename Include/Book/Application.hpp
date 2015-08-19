@@ -9,6 +9,7 @@
 #include <SFML/System/Time.hpp>
 #include <SFML/Graphics/RenderWindow.hpp>
 #include <SFML/Graphics/Text.hpp>
+#include <States/Include/NewLevel.hpp>
 
 
 class Application
@@ -34,7 +35,7 @@ class Application
 		TextureHolder			            mTextures;
 	  	FontHolder				mFonts;
 		Player					mPlayer;
-		CustomClock				mClock;
+		
 		StateStack				mStateStack;
 
 		sf::Text				mStatisticsText;

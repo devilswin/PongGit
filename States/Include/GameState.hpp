@@ -9,6 +9,7 @@
 #include <SFML/Graphics/Text.hpp>
 #include <SFML/Window.hpp>
 #include <include/Book/Utility.hpp>
+#include "Level.hpp"
 class GameState : public State
 {
         public:
@@ -22,8 +23,11 @@ class GameState : public State
         private:
 	    
 	     sf::Text			pScore, cScore;
-	    World				mWorld;
+	    World			mWorld;
 	    Player&			mPlayer;
-	    int				mLevel;
+	    Level			mLevel;
+	    sf::Time			mLvlTime;
+	    bool				mIsPaused;
+	    int				mDifficulty;
 };
 #endif // GAMESTATE_HPP

@@ -14,7 +14,6 @@
 #include <SFML/Graphics/View.hpp>
 #include <SFML/Graphics/Texture.hpp>
 #include <SFML/Graphics.hpp>
-#include "CustomClock.hpp"
 #include "Level.hpp"
 #include <string>
 #include <array>
@@ -30,15 +29,14 @@ namespace sf
 class World : private sf::NonCopyable
 {
         public:
-	    explicit							World(sf::RenderWindow& window, CustomClock clock);
+	    explicit							World(sf::RenderWindow& window);
 	    void								update(sf::Time dt);
 	    void								draw();
 	    
 	    CommandQueue&					getCommandQueue();
-	    std::string							getTimeStr();
-	    int								getTime();
 	    
-	    void								newLevel(int level); 
+	    
+	    void								newLevel(Level &level); 
 	    
 	    
 	    
@@ -64,28 +62,23 @@ class World : private sf::NonCopyable
         private:
 	    
 	    
-	    sf::RenderWindow&				mWindow;
-	    bool CAN_HIT;
-	    sf::View						mWorldView;
-	    TextureHolder					mTextures;
-	    CustomClock						levelClock;
-	    sf::Time						levelTime;
-	    SceneNode						mSceneGraph;
-	    std::array<SceneNode*, LayerCount>		mSceneLayers;
-	    CommandQueue					mCommandQueue;
-	    Ball*						mBall;
-	    int							mPlayerScore,mCPUScore;
-	    sf::FloatRect					mWorldBounds;
-	    sf::Vector2f				    	mSpawnPosition;
-	    //float						mScrollSpeed;
-	    
-	    Paddle*						mPaddle;
-	    Paddle*						mCPUPaddle;
-	    
-	    float currentVelocity;
-	    bool hitCPU, hitPlayer;
-	    int							 mLevelNumber; 
-	    Level						 mLevel;
+	    sf::RenderWindow&										mWindow;
+	    bool													CAN_HIT;
+	    sf::View												mWorldView;
+	    TextureHolder											mTextures;
+	    sf::Time												levelTime;
+	    SceneNode												mSceneGraph;
+	    std::array<SceneNode*, LayerCount>								mSceneLayers;
+	    CommandQueue											mCommandQueue;
+	    Ball*												mBall;
+	    int													mPlayerScore,mCPUScore;
+	    sf::FloatRect											mWorldBounds;
+	    sf::Vector2f											mSpawnPosition;
+	    Paddle*												mPaddle;
+	    Paddle*												mCPUPaddle;
+	    float												currentVelocity;
+	    bool													hitCPU, hitPlayer;
+	    sf::Vector2f											mBallSpeed;
 	    
 };
 

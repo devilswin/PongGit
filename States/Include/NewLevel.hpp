@@ -1,6 +1,5 @@
-#ifndef PAUSESTATE
-#define PAUSESTATE
-
+#ifndef NEWLEVEL
+#define NEWLEVEL
 
 #include <include/Book/State.hpp>
 
@@ -8,10 +7,10 @@
 #include <SFML/Graphics/Text.hpp>
 
 
-class PauseState : public State
+class NewLevel : public State
 {
 	public:
-							PauseState(StateStack& stack, Context context);
+							NewLevel(StateStack& stack, Context context);
 
 		virtual void		draw();
 		virtual bool		update(sf::Time dt);
@@ -21,10 +20,11 @@ class PauseState : public State
 	private:
 		sf::Sprite			mBackgroundSprite;
 		sf::Text			mPausedText;
-		sf::Text			mInstructionText;
+		sf::Text			mCountText;
+		sf::Time			mCountDown;
+		
 
 };
 
-
-#endif // PAUSESTATE
+#endif // NEWLEVEL
 

@@ -94,6 +94,7 @@ void StateStack::applyPendingChanges()
 	mPendingList.clear();
 }
 
+
 StateStack::PendingChange::PendingChange(Action action, States::ID stateID)
 : action(action)
 , stateID(stateID)

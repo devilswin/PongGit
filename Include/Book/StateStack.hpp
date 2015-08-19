@@ -33,7 +33,7 @@ class StateStack : private sf::NonCopyable
 
 	public:		
 		explicit			StateStack(State::Context context);
-
+		
 		template <typename T>
 		void				registerState(States::ID stateID);
 
@@ -46,7 +46,7 @@ class StateStack : private sf::NonCopyable
 		void				clearStates();
 
 		bool				isEmpty() const;
-
+		
 
 	private:
 		State::Ptr			createState(States::ID stateID);

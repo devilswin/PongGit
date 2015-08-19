@@ -105,7 +105,7 @@ sf::Keyboard::Key Player::getAssignedKey(Action action) const
 
 void Player::initializeActions()
 {
-        const float playerSpeed = 50.f;
+        const float playerSpeed = 100;
         
         //mActionBinding[MoveLeft].action	 = derivedAction<Ball>(BallMover(-playerSpeed, 0.f));
         //mActionBinding[MoveRight].action = derivedAction<Ball>(BallMover(+playerSpeed, 0.f));

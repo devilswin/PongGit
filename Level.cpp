@@ -13,13 +13,13 @@ Level::Level()
 
 void Level::setBallSpeed()
 {
-        ballSpeed.x = 150*(1+difficulty/100);
-        ballSpeed.y = ballSpeed.x;
+        ballSpeed.x = 300*(1+difficulty/100);
+        ballSpeed.y = 2*ballSpeed.x;
 }
 
 void Level::setLevelTime()
 {
-        levelTime = sf::seconds(10+(10*difficulty));
+        levelTime = sf::seconds(15+(2*difficulty));
 }
 
 void Level::setPaddleSize()
@@ -34,6 +34,10 @@ void Level::setPointsPerHit()
 void Level::setDifficulty(int diff)
 {
         difficulty = diff;
+        setLevelTime();      
+        setBallSpeed();      
+        setPaddleSize();     
+        setPointsPerHit();   
 }
 
 sf::Vector2f Level::getBallSpeed()

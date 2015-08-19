@@ -67,8 +67,7 @@ SOURCES       = Source/Application.cpp \
 		States/Source/MenuState.cpp \
 		States/Source/PauseState.cpp \
 		States/Source/NewLevel.cpp \
-		Level.cpp \
-		CustomClock.cpp 
+		Level.cpp 
 OBJECTS       = Application.o \
 		Command.o \
 		CommandQueue.o \
@@ -88,8 +87,7 @@ OBJECTS       = Application.o \
 		MenuState.o \
 		PauseState.o \
 		NewLevel.o \
-		Level.o \
-		CustomClock.o
+		Level.o
 DIST          = ../../../../Qt/5.4/clang_64/mkspecs/features/spec_pre.prf \
 		../../../../Qt/5.4/clang_64/mkspecs/qdevice.pri \
 		../../../../Qt/5.4/clang_64/mkspecs/features/device_config.prf \
@@ -237,7 +235,7 @@ DIST          = ../../../../Qt/5.4/clang_64/mkspecs/features/spec_pre.prf \
 		States/Include/MenuState.hpp \
 		States/Include/PauseState.hpp \
 		Level.hpp \
-		CustomClock.hpp Source/Application.cpp \
+		States/Include/NewLevel.hpp Source/Application.cpp \
 		Source/Command.cpp \
 		Source/CommandQueue.cpp \
 		Source/Entity.cpp \
@@ -256,8 +254,7 @@ DIST          = ../../../../Qt/5.4/clang_64/mkspecs/features/spec_pre.prf \
 		States/Source/MenuState.cpp \
 		States/Source/PauseState.cpp \
 		States/Source/NewLevel.cpp \
-		Level.cpp \
-		CustomClock.cpp
+		Level.cpp
 QMAKE_TARGET  = Pong
 DESTDIR       = #avoid trailing-slash linebreak
 TARGET        = Pong
@@ -623,8 +620,6 @@ Application.o: Source/Application.cpp include/Book/Application.hpp \
 		include/Book/StateStack.hpp \
 		include/Book/State.hpp \
 		include/Book/StateIdentifiers.hpp \
-		CustomClock.hpp \
-		/usr/local/include/SFML/System/Clock.hpp \
 		/usr/local/include/SFML/System/NonCopyable.hpp \
 		/usr/local/include/SFML/Graphics/RenderWindow.hpp \
 		/usr/local/include/SFML/Graphics/Export.hpp \
@@ -645,6 +640,7 @@ Application.o: Source/Application.cpp include/Book/Application.hpp \
 		/usr/local/include/SFML/Window/WindowHandle.hpp \
 		/usr/local/include/SFML/Window/WindowStyle.hpp \
 		/usr/local/include/SFML/Window/GlResource.hpp \
+		/usr/local/include/SFML/System/Clock.hpp \
 		/usr/local/include/SFML/Graphics/Text.hpp \
 		/usr/local/include/SFML/Graphics/Drawable.hpp \
 		/usr/local/include/SFML/Graphics/Transformable.hpp \
@@ -762,8 +758,6 @@ Main.o: Source/Main.cpp include/Book/Application.hpp \
 		include/Book/StateStack.hpp \
 		include/Book/State.hpp \
 		include/Book/StateIdentifiers.hpp \
-		CustomClock.hpp \
-		/usr/local/include/SFML/System/Clock.hpp \
 		/usr/local/include/SFML/System/NonCopyable.hpp \
 		/usr/local/include/SFML/Graphics/RenderWindow.hpp \
 		/usr/local/include/SFML/Graphics/Export.hpp \
@@ -784,6 +778,7 @@ Main.o: Source/Main.cpp include/Book/Application.hpp \
 		/usr/local/include/SFML/Window/WindowHandle.hpp \
 		/usr/local/include/SFML/Window/WindowStyle.hpp \
 		/usr/local/include/SFML/Window/GlResource.hpp \
+		/usr/local/include/SFML/System/Clock.hpp \
 		/usr/local/include/SFML/Graphics/Text.hpp \
 		/usr/local/include/SFML/Graphics/Drawable.hpp \
 		/usr/local/include/SFML/Graphics/Transformable.hpp \
@@ -931,11 +926,9 @@ SpriteNode.o: Source/SpriteNode.cpp include/Book/SpriteNode.hpp \
 State.o: Source/State.cpp include/Book/State.hpp \
 		include/Book/StateIdentifiers.hpp \
 		include/Book/ResourceIdentifiers.hpp \
-		CustomClock.hpp \
-		/usr/local/include/SFML/System/Clock.hpp \
+		/usr/local/include/SFML/System/Time.hpp \
 		/usr/local/include/SFML/System/Export.hpp \
 		/usr/local/include/SFML/Config.hpp \
-		/usr/local/include/SFML/System/Time.hpp \
 		/usr/local/include/SFML/Window/Event.hpp \
 		/usr/local/include/SFML/Window/Joystick.hpp \
 		/usr/local/include/SFML/Window/Export.hpp \
@@ -958,11 +951,9 @@ StateStack.o: Source/StateStack.cpp include/Book/StateStack.hpp \
 		include/Book/State.hpp \
 		include/Book/StateIdentifiers.hpp \
 		include/Book/ResourceIdentifiers.hpp \
-		CustomClock.hpp \
-		/usr/local/include/SFML/System/Clock.hpp \
+		/usr/local/include/SFML/System/Time.hpp \
 		/usr/local/include/SFML/System/Export.hpp \
 		/usr/local/include/SFML/Config.hpp \
-		/usr/local/include/SFML/System/Time.hpp \
 		/usr/local/include/SFML/Window/Event.hpp \
 		/usr/local/include/SFML/Window/Joystick.hpp \
 		/usr/local/include/SFML/Window/Export.hpp \
@@ -1094,7 +1085,6 @@ World.o: Source/World.cpp include/Book/World.hpp \
 		/usr/local/include/SFML/Graphics/ConvexShape.hpp \
 		/usr/local/include/SFML/Graphics/Text.hpp \
 		Paddle.hpp \
-		CustomClock.hpp \
 		Level.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o World.o Source/World.cpp
 
@@ -1102,11 +1092,9 @@ GameState.o: States/Source/GameState.cpp States/Include/GameState.hpp \
 		include/Book/State.hpp \
 		include/Book/StateIdentifiers.hpp \
 		include/Book/ResourceIdentifiers.hpp \
-		CustomClock.hpp \
-		/usr/local/include/SFML/System/Clock.hpp \
+		/usr/local/include/SFML/System/Time.hpp \
 		/usr/local/include/SFML/System/Export.hpp \
 		/usr/local/include/SFML/Config.hpp \
-		/usr/local/include/SFML/System/Time.hpp \
 		/usr/local/include/SFML/Window/Event.hpp \
 		/usr/local/include/SFML/Window/Joystick.hpp \
 		/usr/local/include/SFML/Window/Export.hpp \
@@ -1148,6 +1136,7 @@ GameState.o: States/Source/GameState.cpp States/Include/GameState.hpp \
 		/usr/local/include/SFML/Graphics.hpp \
 		/usr/local/include/SFML/Window.hpp \
 		/usr/local/include/SFML/System.hpp \
+		/usr/local/include/SFML/System/Clock.hpp \
 		/usr/local/include/SFML/System/Err.hpp \
 		/usr/local/include/SFML/System/InputStream.hpp \
 		/usr/local/include/SFML/System/Lock.hpp \
@@ -1347,11 +1336,9 @@ MenuState.o: States/Source/MenuState.cpp States/Include/MenuState.hpp \
 		include/Book/State.hpp \
 		include/Book/StateIdentifiers.hpp \
 		include/Book/ResourceIdentifiers.hpp \
-		CustomClock.hpp \
-		/usr/local/include/SFML/System/Clock.hpp \
+		/usr/local/include/SFML/System/Time.hpp \
 		/usr/local/include/SFML/System/Export.hpp \
 		/usr/local/include/SFML/Config.hpp \
-		/usr/local/include/SFML/System/Time.hpp \
 		/usr/local/include/SFML/Window/Event.hpp \
 		/usr/local/include/SFML/Window/Joystick.hpp \
 		/usr/local/include/SFML/Window/Export.hpp \
@@ -1398,18 +1385,17 @@ MenuState.o: States/Source/MenuState.cpp States/Include/MenuState.hpp \
 		/usr/local/include/SFML/Window/ContextSettings.hpp \
 		/usr/local/include/SFML/Window/VideoMode.hpp \
 		/usr/local/include/SFML/Window/WindowHandle.hpp \
-		/usr/local/include/SFML/Window/WindowStyle.hpp
+		/usr/local/include/SFML/Window/WindowStyle.hpp \
+		/usr/local/include/SFML/System/Clock.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o MenuState.o States/Source/MenuState.cpp
 
 PauseState.o: States/Source/PauseState.cpp States/Include/PauseState.hpp \
 		include/Book/State.hpp \
 		include/Book/StateIdentifiers.hpp \
 		include/Book/ResourceIdentifiers.hpp \
-		CustomClock.hpp \
-		/usr/local/include/SFML/System/Clock.hpp \
+		/usr/local/include/SFML/System/Time.hpp \
 		/usr/local/include/SFML/System/Export.hpp \
 		/usr/local/include/SFML/Config.hpp \
-		/usr/local/include/SFML/System/Time.hpp \
 		/usr/local/include/SFML/Window/Event.hpp \
 		/usr/local/include/SFML/Window/Joystick.hpp \
 		/usr/local/include/SFML/Window/Export.hpp \
@@ -1457,10 +1443,66 @@ PauseState.o: States/Source/PauseState.cpp States/Include/PauseState.hpp \
 		/usr/local/include/SFML/Window/ContextSettings.hpp \
 		/usr/local/include/SFML/Window/VideoMode.hpp \
 		/usr/local/include/SFML/Window/WindowHandle.hpp \
-		/usr/local/include/SFML/Window/WindowStyle.hpp
+		/usr/local/include/SFML/Window/WindowStyle.hpp \
+		/usr/local/include/SFML/System/Clock.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o PauseState.o States/Source/PauseState.cpp
 
-NewLevel.o: States/Source/NewLevel.cpp 
+NewLevel.o: States/Source/NewLevel.cpp States/Include/NewLevel.hpp \
+		include/Book/State.hpp \
+		include/Book/StateIdentifiers.hpp \
+		include/Book/ResourceIdentifiers.hpp \
+		/usr/local/include/SFML/System/Time.hpp \
+		/usr/local/include/SFML/System/Export.hpp \
+		/usr/local/include/SFML/Config.hpp \
+		/usr/local/include/SFML/Window/Event.hpp \
+		/usr/local/include/SFML/Window/Joystick.hpp \
+		/usr/local/include/SFML/Window/Export.hpp \
+		/usr/local/include/SFML/System/String.hpp \
+		/usr/local/include/SFML/System/Utf.hpp \
+		/usr/local/include/SFML/System/Utf.inl \
+		/usr/local/include/SFML/System/String.inl \
+		/usr/local/include/SFML/Window/Keyboard.hpp \
+		/usr/local/include/SFML/Window/Mouse.hpp \
+		/usr/local/include/SFML/System/Vector2.hpp \
+		/usr/local/include/SFML/System/Vector2.inl \
+		/usr/local/include/SFML/Window/Sensor.hpp \
+		/usr/local/include/SFML/System/Vector3.hpp \
+		/usr/local/include/SFML/System/Vector3.inl \
+		/usr/local/include/SFML/Graphics/Sprite.hpp \
+		/usr/local/include/SFML/Graphics/Export.hpp \
+		/usr/local/include/SFML/Graphics/Drawable.hpp \
+		/usr/local/include/SFML/Graphics/RenderStates.hpp \
+		/usr/local/include/SFML/Graphics/BlendMode.hpp \
+		/usr/local/include/SFML/Graphics/Transform.hpp \
+		/usr/local/include/SFML/Graphics/Rect.hpp \
+		/usr/local/include/SFML/Graphics/Rect.inl \
+		/usr/local/include/SFML/Graphics/Transformable.hpp \
+		/usr/local/include/SFML/Graphics/Vertex.hpp \
+		/usr/local/include/SFML/Graphics/Color.hpp \
+		/usr/local/include/SFML/Graphics/Text.hpp \
+		/usr/local/include/SFML/Graphics/Font.hpp \
+		/usr/local/include/SFML/Graphics/Glyph.hpp \
+		/usr/local/include/SFML/Graphics/Texture.hpp \
+		/usr/local/include/SFML/Graphics/Image.hpp \
+		/usr/local/include/SFML/Window/GlResource.hpp \
+		/usr/local/include/SFML/Graphics/VertexArray.hpp \
+		/usr/local/include/SFML/Graphics/PrimitiveType.hpp \
+		include/Book/Utility.hpp \
+		include/Book/Utility.inl \
+		include/Book/ResourceHolder.hpp \
+		Include/Book/ResourceHolder.inl \
+		/usr/local/include/SFML/Graphics/RectangleShape.hpp \
+		/usr/local/include/SFML/Graphics/Shape.hpp \
+		/usr/local/include/SFML/Graphics/RenderWindow.hpp \
+		/usr/local/include/SFML/Graphics/RenderTarget.hpp \
+		/usr/local/include/SFML/Graphics/View.hpp \
+		/usr/local/include/SFML/System/NonCopyable.hpp \
+		/usr/local/include/SFML/Window/Window.hpp \
+		/usr/local/include/SFML/Window/ContextSettings.hpp \
+		/usr/local/include/SFML/Window/VideoMode.hpp \
+		/usr/local/include/SFML/Window/WindowHandle.hpp \
+		/usr/local/include/SFML/Window/WindowStyle.hpp \
+		/usr/local/include/SFML/System/Clock.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o NewLevel.o States/Source/NewLevel.cpp
 
 Level.o: Level.cpp Level.hpp \
@@ -1489,13 +1531,6 @@ Level.o: Level.cpp Level.hpp \
 		/usr/local/include/SFML/System/Vector3.hpp \
 		/usr/local/include/SFML/System/Vector3.inl
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Level.o Level.cpp
-
-CustomClock.o: CustomClock.cpp CustomClock.hpp \
-		/usr/local/include/SFML/System/Clock.hpp \
-		/usr/local/include/SFML/System/Export.hpp \
-		/usr/local/include/SFML/Config.hpp \
-		/usr/local/include/SFML/System/Time.hpp
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o CustomClock.o CustomClock.cpp
 
 ####### Install
 

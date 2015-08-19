@@ -9,19 +9,17 @@
 #include <cstdio>
 #include <ctime>
 
-World::World(sf::RenderWindow& window, CustomClock clock)
+World::World(sf::RenderWindow& window)
         : mWindow(window)
         , CAN_HIT(true)
         , mWorldView(window.getDefaultView())
         , mTextures() 
-        , levelClock(clock)
         , levelTime(sf::seconds(5))
         , mSceneGraph()
         , mSceneLayers()
         , mPlayerScore(0)
         , mWorldBounds(0.f, 0.f, mWorldView.getSize().x, mWorldView.getSize().y)
-        , mSpawnPosition(mWorldView.getSize().x / 2.f, mWorldBounds.height - mWorldView.getSize().y / 2.f)
-        , mLevelNumber(0)
+        , mSpawnPosition(mWorldView.getSize().x / 2.f, mWorldBounds.height - mWorldView.getSize().y / 2.f)  
         
 {
         
@@ -34,7 +32,7 @@ World::World(sf::RenderWindow& window, CustomClock clock)
 
 void World::update(sf::Time dt)
 {
-    
+        
         
         
         
@@ -77,7 +75,7 @@ void World::update(sf::Time dt)
         mCPUPaddle->setPosition(mCPUPaddle->getPosition().x, mBall->getPosition().y);
         
         
-
+        
         
         
         while (!mCommandQueue.isEmpty())
@@ -91,9 +89,9 @@ void World::update(sf::Time dt)
         {
 	    mCPUScore += 1;
 	    mBall->setPosition(mSpawnPosition);
-	    mBall->setVelocity(400, 50);
+	    mBall->setVelocity(mBallSpeed);
         }
-       
+        
 }
 
 void World::draw()
@@ -213,23 +211,11 @@ void World::adaptPlayerVelocity()
         
 }
 
-std::string World::getTimeStr()
-{
-      
-	    return std::to_string(int(std::floor(levelTime.asSeconds()-levelClock.getElapsedTime().asSeconds()))) ;
-      
-}
-
-int World::getTime()
-{
-       return int(std::floor(levelTime.asSeconds()-levelClock.getElapsedTime().asSeconds()));
-}
-
 void World::checkCollision(Entity *ball,Entity *paddle, bool &hit)
 {
         if(ball->getBoundingRect().intersects(paddle->getBoundingRect()) && hit == true)
         {
-	    if( ball->getPosition().y - ball->getBoundingRect().height >= paddle->getPosition().y- paddle->getBoundingRect().height && ball->getPosition().y + ball->getBoundingRect().height<=paddle->getPosition().y + paddle->getBoundingRect().height)
+	    if( ball->getPosition().y - ball->getBoundingRect().height >= (paddle->getPosition().y- paddle->getBoundingRect().height - 50)&& ball->getPosition().y + ball->getBoundingRect().height<=paddle->getPosition().y + paddle->getBoundingRect().height  + 50 )
 		ball->setVelocity(-1.f*ball->getVelocity().x, ball->getVelocity().y);
 	    else 
 		
@@ -238,18 +224,23 @@ void World::checkCollision(Entity *ball,Entity *paddle, bool &hit)
         }
 }
 
-void World::setLevelTime(sf::Time Seconds)
-{
-        levelTime = Seconds;
-        
-        
-}
 
-void World::newLevel(int level)
+void World::newLevel(Level &level)
 {
         mPlayerScore = 0;
-        mLevel.setDifficulty(level);
-        setLevelTime(mLevel.getLevelTime());
-        levelClock.restart();
+        float y, x;
+        y = rand() % 100 + (level.getBallSpeed().y - 100);
+        x = rand() % 100 + (level.getBallSpeed().x - 100);
+        int yNeg;
+        yNeg = rand() % 2;
+        if(yNeg ==  1)
+	    y = -1*y;
+        else if (yNeg == 0)
+	    yNeg = rand() % 2;    
+        x = -1*x;
+        mBallSpeed.x = x;
+        mBallSpeed.y = y;
+        mBall->setVelocity(x,y); 
+        mBall->setPosition(mSpawnPosition);
 }
 
