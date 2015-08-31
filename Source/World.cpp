@@ -111,9 +111,9 @@ CommandQueue& World::getCommandQueue()
 void World::loadTextures()
 {
         
-        mTextures.load(Textures::Paddle, "/Users/gabeorlanski/Desktop/Plse save battery/QT project/Pong/Media/Textures/paddle.png");
-        mTextures.load(Textures::Ball, "/Users/gabeorlanski/Desktop/Plse save battery/QT project/Pong/Media/Textures/ball.png");
-        mTextures.load(Textures::Desert, "/Users/gabeorlanski/Desktop/Plse save battery/QT project/Pong/Media/Textures/Desert.png");	
+        mTextures.load(Textures::Paddle, "Media/Textures/paddle.png");
+        mTextures.load(Textures::Ball, "Media/Textures/ball.png");
+        mTextures.load(Textures::Desert, "Media/Textures/Desert.png");	
 }
 
 void World::buildScene()

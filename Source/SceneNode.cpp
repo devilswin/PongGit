@@ -99,5 +99,5 @@ unsigned int SceneNode::getCategory() const
 }
 sf::FloatRect SceneNode::getBoundingRect() const 
 {
-      
+	return sf::FloatRect(sf::Vector2f(0,0),sf::Vector2f(0, 0));
 }
