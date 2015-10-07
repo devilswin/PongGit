@@ -2,3 +2,6 @@
 .pro
 .pro.user
 .pri
+.vxcproj
+.vxcproj.user
+.vxcproj.filters
